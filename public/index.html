@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141023410-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-141023410-1");
+    </script>
+
+    <title>Tableau Public API - WDC</title>
+    <meta http-equiv="Cache-Control" content="no-store" />
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js" type="text/javascript"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://connectors.tableau.com/libs/tableauwdc-2.3.latest.js" type="text/javascript"></script>
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <ul class="nav nav-tabs mt-3">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#about">About</a>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active show" id="home">
+        <div class="container container-table">
+          <h2 class="mt-4">Tableau Public WDC</h2>
+          <div class="form-group">
+            <label for="userName">Enter Tableau Public Username As Displayed in the URL</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tableauUsername"
+              aria-describedby="username"
+              placeholder="Enter Username"
+            />
+            <small class="form-text text-muted"
+              >For multiple users please provide a comma separated list of usernames</small
+            >
+            <div class="row vertical-center-row">
+              <button type="button" id="submitButton" class="btn btn-outline-primary" style="margin: 10px;">
+                Get Data
+              </button>
+              <div>
+                <p id="error"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="about">
+        <div class="container">
+          <h2 class="mt-4">How to find your Tableau Public Username?</h2>
+          <ol>
+            <li>Go to <a href="https://public.tableau.com/s/" target="_blank">Tableau Public</a></li>
+            <li>Search for your account</li>
+            <li>Find your username in the url as per the image below</li>
+            <img class="m-2" src="./image/image.png" alt="tableauPublicImage" width="50%" />
+            <li>Copy the username and paste in the input box on the home page of this WDC</li>
+            <li>
+              <strong>Optional</strong>: Provide a comma separated list of users to get profile data for more users
+              (e.g. userName1,userName2)
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="footer mt-auto">
+      <p>Created by <a href="https://github.com/andre347" target="_blank">Andre de Vries</a></p>
+    </div>
+    <script src="./js/schema.js" type="text/javascript"></script>
+    <script src="./js/app.js" type="text/javascript"></script>
+  </body>
+</html>

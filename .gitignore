@@ -1,0 +1,11 @@
+# npm
+node_modules
+package-lock.json
+
+# zeit
+now.json
+public/now.json
+.nowignore
+
+# OS X
+.DS_Store

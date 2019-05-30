@@ -1,0 +1,19 @@
+{
+  "name": "tableaupublic-wdc",
+  "version": "1.0.0",
+  "description": "Tableau Public Web Data Connector",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Andre de Vries",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "flat": "^4.1.0",
+    "node-fetch": "^2.6.0"
+  }
+}
