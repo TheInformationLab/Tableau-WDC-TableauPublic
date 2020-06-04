@@ -62,6 +62,9 @@
           attributionsworkbookRepoUrl: resp[i].attributionsworkbookRepoUrl,
           attributionsauthorDisplayName: resp[i].attributionsauthorDisplayName,
           attributionsworkbookName: resp[i].attributionsworkbookName,
+          showInProfile: resp[i].showInProfile,
+          setOwnerId: resp[i].setOwnerId,
+          setDefaultViewName: resp[i].setDefaultViewName,
           attributionsworkbookViewName: resp[i].attributionsworkbookViewName
         });
       }

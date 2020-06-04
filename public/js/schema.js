@@ -68,6 +68,14 @@ var cols = [
     dataType: tableau.dataTypeEnum.string
   },
   {
+    id: "setDefaultViewName",
+    dataType: tableau.dataTypeEnum.bool
+  },
+  {
+    id: "setOwnerId",
+    dataType: tableau.dataTypeEnum.bool
+  },
+  {
     id: "permalink",
     dataType: tableau.dataTypeEnum.string
   },
@@ -118,5 +126,9 @@ var cols = [
   {
     id: "extractInfo",
     dataType: tableau.dataTypeEnum.string
+  },
+  {
+    id: "showInProfile",
+    dataType: tableau.dataTypeEnum.bool
   }
 ];
