@@ -49,9 +49,9 @@ module.exports = async (req, res) => {
   //     returnedDataArr.push(...userdata);
   //   });
   //   res.json(returnedDataArr);
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-  const json = await res.json();
-  res.json(json);
+  const todores = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const todojson = await todores.json();
+  res.json(todojson);
 
   //   return;
   //   res.status(200).end("Yep this works");
