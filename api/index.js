@@ -64,7 +64,7 @@ module.exports = allowCors(async (req, res) => {
   let returnedDataArr = [];
 
   //   const username = req.query.data;
-  const username = "marc.reid";
+  const username = req.query.data;
   const usernameArray = username.split(",");
   const returnedData = await getAllUserData(usernameArray);
 
