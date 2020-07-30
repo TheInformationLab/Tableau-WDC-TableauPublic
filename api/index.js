@@ -49,7 +49,9 @@ module.exports = async (req, res) => {
   //     returnedDataArr.push(...userdata);
   //   });
   //   res.json(returnedDataArr);
-  const todores = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const todores = await fetch(
+    "https://public.tableau.com/profile/api/chris.luv/workbooks?count=100&index=1"
+  );
   const todojson = await todores.json();
   res.json(todojson);
 
