@@ -63,7 +63,6 @@ const getAllUserData = async (array) => {
 module.exports = allowCors(async (req, res) => {
   let returnedDataArr = [];
 
-  //   const username = req.query.data;
   const username = req.query.data;
   const usernameArray = username.split(",");
   const returnedData = await getAllUserData(usernameArray);
@@ -73,12 +72,4 @@ module.exports = allowCors(async (req, res) => {
   });
 
   res.json(returnedDataArr);
-  //   const todores = await fetch(
-  //     "https://public.tableau.com/profile/api/marc.reid/workbooks?count=100&index=0"
-  //   );
-  //   const todojson = await todores.json();
-  //   res.json(todojson);
-
-  //   return;
-  //   res.status(200).end("Yep this works");
 });
