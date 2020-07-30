@@ -8,20 +8,37 @@ app.use(express.json());
 
 let index = 0;
 
+let whiteList = [
+  "https://tableau-public-api.wdc.dev/",
+  "https://tableau-public.wdc.dev",
+];
+
 //enable cors for only our WDC front-end
 const corsOptions = {
-  origin: "https://tableau-public.wdc.dev",
-  optionsSuccessStatus: 200
+  origin: function (origin, callback) {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
 };
+
+// const corsOptions = {
+//   origin: "https://tableau-public.wdc.dev",
+//   optionsSuccessStatus: 200
+// };
 
 // get data
 const getData = async (user, arr) => {
   try {
     let result = arr || [];
     const count = 100;
-    const res = await fetch(`https://public.tableau.com/profile/api/${user}/workbooks?count=${count}&index=${index}`);
+    const res = await fetch(
+      `https://public.tableau.com/profile/api/${user}/workbooks?count=${count}&index=${index}`
+    );
     const json = await res.json();
-    json.map(viz => {
+    json.map((viz) => {
       const flatViz = flatten(viz);
       let str = JSON.stringify(flatViz).replace(/\.\d\./g, "");
       newJson = JSON.parse(str);
@@ -43,8 +60,8 @@ const getData = async (user, arr) => {
 };
 
 // function to loop over array with promise
-const getAllUserData = async array => {
-  return await Promise.all(array.map(user => getData(user)));
+const getAllUserData = async (array) => {
+  return await Promise.all(array.map((user) => getData(user)));
 };
 
 // create route to get data
@@ -55,7 +72,7 @@ app.get("/data", cors(corsOptions), async (req, res) => {
   const usernameArray = username.split(",");
   const returnedData = await getAllUserData(usernameArray);
 
-  returnedData.map(userdata => {
+  returnedData.map((userdata) => {
     returnedDataArr.push(...userdata);
   });
 
