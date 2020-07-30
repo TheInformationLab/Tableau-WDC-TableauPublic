@@ -37,5 +37,16 @@ const getAllUserData = async (array) => {
 };
 
 module.exports = async (req, res) => {
-  res.status(200).end("Yep this works");
+  let returnedDataArr = [];
+
+  const username = req.query.data;
+  const usernameArray = username.split(",");
+  const returnedData = await getAllUserData(usernameArray);
+
+  returnedData.map((userdata) => {
+    returnedDataArr.push(...userdata);
+  });
+  res.json(returnedDataArr);
+  return;
+  //   res.status(200).end("Yep this works");
 };
