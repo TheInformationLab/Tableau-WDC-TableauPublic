@@ -1,4 +1,4 @@
-(function() {
+(function () {
   // Create the connector object
   var myConnector = tableau.makeConnector();
 
@@ -8,27 +8,27 @@
   }
 
   // Define the schema
-  myConnector.getSchema = function(schemaCallback) {
+  myConnector.getSchema = function (schemaCallback) {
     var tableSchema = {
       id: "TableauPublic",
       alias: "Tableau Public API",
-      columns: cols
+      columns: cols,
     };
 
     schemaCallback([tableSchema]);
   };
 
   // Grab data from server /data
-  myConnector.getData = function(table, doneCallback) {
+  myConnector.getData = function (table, doneCallback) {
     // var url = "http://localhost:3001" + "/data";
-    var deployedUrl = "https://tableau-public-api.wdc.dev" + "/data";
+    var deployedUrl = "https://tableau-public-api.wdc.dev/api";
     var sendUsername = tableau.connectionData.replace(/\s/g, "");
 
     $.getJSON(deployedUrl, {
       data: sendUsername,
       contentType: "application/json; charset=utf-8",
-      dataType: "json"
-    }).done(function(resp) {
+      dataType: "json",
+    }).done(function (resp) {
       var tableData = [];
 
       for (var i = 0, len = resp.length; i < len; i++) {
@@ -62,7 +62,7 @@
           attributionsworkbookRepoUrl: resp[i].attributionsworkbookRepoUrl,
           attributionsauthorDisplayName: resp[i].attributionsauthorDisplayName,
           attributionsworkbookName: resp[i].attributionsworkbookName,
-          attributionsworkbookViewName: resp[i].attributionsworkbookViewName
+          attributionsworkbookViewName: resp[i].attributionsworkbookViewName,
         });
       }
       table.appendRows(tableData);
@@ -73,8 +73,8 @@
   tableau.registerConnector(myConnector);
 
   // Create event listeners for when the user submits the form
-  $(document).ready(function() {
-    $("#submitButton").click(function() {
+  $(document).ready(function () {
+    $("#submitButton").click(function () {
       var userName = $("#tableauUsername").val();
       if (userName !== "") {
         tableau.connectionName = "Tableau Public API"; // This will be the data source name in Tableau
