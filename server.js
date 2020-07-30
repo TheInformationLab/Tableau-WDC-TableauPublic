@@ -14,7 +14,7 @@ let whiteList = [
 ];
 
 //enable cors for only our WDC front-end
-https: const corsOptions = {
+const corsOptions = {
   origin: function (origin, callback) {
     if (whiteList.indexOf(origin) !== -1) {
       callback(null, true);
