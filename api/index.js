@@ -1,6 +1,8 @@
 const fetch = require("node-fetch");
 const flatten = require("flat");
 
+let index = 0;
+
 // get data
 const getData = async (user, arr) => {
   try {
