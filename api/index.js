@@ -60,7 +60,7 @@ const getAllUserData = async (array) => {
   return await Promise.all(array.map((user) => getData(user)));
 };
 
-module.exports = async (req, res) => {
+module.exports = allowCors(async (req, res) => {
   let returnedDataArr = [];
 
   //   const username = req.query.data;
@@ -81,4 +81,4 @@ module.exports = async (req, res) => {
 
   //   return;
   //   res.status(200).end("Yep this works");
-};
+});
