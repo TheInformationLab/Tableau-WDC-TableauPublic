@@ -39,16 +39,20 @@ const getAllUserData = async (array) => {
 };
 
 module.exports = async (req, res) => {
-  let returnedDataArr = [];
+  //   let returnedDataArr = [];
 
-  const username = req.query.data;
-  const usernameArray = username.split(",");
-  const returnedData = await getAllUserData(usernameArray);
+  //   const username = req.query.data;
+  //   const usernameArray = username.split(",");
+  //   const returnedData = await getAllUserData(usernameArray);
 
-  returnedData.map((userdata) => {
-    returnedDataArr.push(...userdata);
-  });
-  res.json(returnedDataArr);
-  return;
+  //   returnedData.map((userdata) => {
+  //     returnedDataArr.push(...userdata);
+  //   });
+  //   res.json(returnedDataArr);
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const json = await res.json();
+  res.json(json);
+
+  //   return;
   //   res.status(200).end("Yep this works");
 };
