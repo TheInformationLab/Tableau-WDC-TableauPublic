@@ -21,8 +21,7 @@
   // Grab data from server /data
   myConnector.getData = function (table, doneCallback) {
     // var url = "http://localhost:3001" + "/data";
-    var deployedUrl =
-      "https://tableau-wdc-tableau-public-git-serverless.infolab.now.sh/api";
+    var deployedUrl = "https://tableau-public-api.wdc.dev/api";
     var sendUsername = tableau.connectionData.replace(/\s/g, "");
 
     $.getJSON(deployedUrl, {
