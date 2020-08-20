@@ -3,7 +3,7 @@
   var myConnector = tableau.makeConnector();
 
   function convertDate(d) {
-    var s = new Date(d);
+    var s = new Date(d).toLocaleDateString();
     return s;
   }
 
