@@ -21,15 +21,15 @@ var cols = [
   },
   {
     id: "firstPublishDate",
-    dataType: tableau.dataTypeEnum.string,
+    dataType: tableau.dataTypeEnum.date,
   },
   {
     id: "lastPublishDate",
-    dataType: tableau.dataTypeEnum.string,
+    dataType: tableau.dataTypeEnum.date,
   },
   {
     id: "lastUpdateDate",
-    dataType: tableau.dataTypeEnum.string,
+    dataType: tableau.dataTypeEnum.date,
   },
   {
     id: "description",
