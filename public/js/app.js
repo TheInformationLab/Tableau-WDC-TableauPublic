@@ -43,7 +43,9 @@
           ownerId: resp[i].ownerId,
           workbookRepoUrl: resp[i].workbookRepoUrl,
           numberOfFavorites: resp[i].numberOfFavorites,
-          firstPublishDate: resp[i].firstPublishDate,
+          firstPublishDate: new Date(
+            resp[i].firstPublishDate
+          ).toLocaleDateString(),
           lastPublishDate: convertDate(resp[i].lastPublishDate),
           lastUpdateDate: convertDate(resp[i].lastUpdateDate),
           permalink: resp[i].permalink,
