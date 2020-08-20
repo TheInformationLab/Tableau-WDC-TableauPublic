@@ -30,7 +30,10 @@
       dataType: "json",
     }).done(function (resp) {
       var tableData = [];
-      console.log(resp);
+      console.log("Logging the response", resp);
+
+      console.log(resp[0].firstPublishDate);
+      console.log(convertDate(resp[0].firstPublishDate));
 
       for (var i = 0, len = resp.length; i < len; i++) {
         tableData.push({
