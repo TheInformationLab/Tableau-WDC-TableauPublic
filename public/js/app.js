@@ -30,6 +30,7 @@
       dataType: "json",
     }).done(function (resp) {
       var tableData = [];
+      console.log(resp);
 
       for (var i = 0, len = resp.length; i < len; i++) {
         tableData.push({
