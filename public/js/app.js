@@ -3,7 +3,7 @@
   var myConnector = tableau.makeConnector();
 
   function convertDate(d) {
-    var s = new Date(d).toISOString();
+    var s = new Date(d).toISOString().toString().replace(/T.*/g, "");
     return s;
   }
 
