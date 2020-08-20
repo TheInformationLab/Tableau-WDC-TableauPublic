@@ -43,7 +43,7 @@
           ownerId: resp[i].ownerId,
           workbookRepoUrl: resp[i].workbookRepoUrl,
           numberOfFavorites: resp[i].numberOfFavorites,
-          firstPublishDate: new Date(resp[i].firstPublishDate),
+          firstPublishDate: convertDate(resp[i].firstPublishDate),
           lastPublishDate: convertDate(resp[i].lastPublishDate),
           lastUpdateDate: convertDate(resp[i].lastUpdateDate),
           permalink: resp[i].permalink,
