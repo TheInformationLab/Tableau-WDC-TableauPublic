@@ -1,42 +1,29 @@
-const express = require("express");
-const app = express();
 const fetch = require("node-fetch");
 const flatten = require("flat");
-const cors = require("cors");
 
-app.use(express.json());
+// CORS setting for Vercel
+// Source: https://vercel.com/knowledge/how-to-enable-cors
+
+const allowCors = (fn) => async (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  // another option
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+  );
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
+  }
+  return await fn(req, res);
+};
+
+// index for looping
 
 let index = 0;
-
-let whiteList = [
-  "https://tableau-public-api.wdc.dev/",
-  "https://tableau-public.wdc.dev",
-];
-
-//enable cors for only our WDC front-end
-const corsOptions = {
-<<<<<<< HEAD
-  origin: "https://tableau-public.wdc.dev",
-  optionsSuccessStatus: 200,
-};
-
-// const corsOptions = {
-//   origin: "http://localhost:3000",
-=======
-  origin: function (origin, callback) {
-    if (whiteList.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
-
-// const corsOptions = {
-//   origin: "https://tableau-public.wdc.dev",
->>>>>>> master
-//   optionsSuccessStatus: 200
-// };
 
 // get data
 const getData = async (user, arr) => {
@@ -60,7 +47,7 @@ const getData = async (user, arr) => {
       await getData(user, result);
     }
     index = 0;
-    return await result;
+    return result;
   } catch (err) {
     // logging errors if there are any
     console.log(err);
@@ -73,8 +60,7 @@ const getAllUserData = async (array) => {
   return await Promise.all(array.map((user) => getData(user)));
 };
 
-// create route to get data
-app.get("/data", cors(corsOptions), async (req, res) => {
+module.exports = allowCors(async (req, res) => {
   let returnedDataArr = [];
 
   const username = req.query.data;
@@ -85,11 +71,5 @@ app.get("/data", cors(corsOptions), async (req, res) => {
     returnedDataArr.push(...userdata);
   });
 
-  //   const usertoFetch = usernameArray[0];
-  //   const data = await getData(usertoFetch);
   res.json(returnedDataArr);
-
-  return;
 });
-
-app.listen();

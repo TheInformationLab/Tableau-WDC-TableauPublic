@@ -9,3 +9,5 @@ public/now.json
 
 # OS X
 .DS_Store
+
+.vercel
