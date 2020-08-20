@@ -21,7 +21,7 @@ var cols = [
   },
   {
     id: "firstPublishDate",
-    dataType: tableau.dataTypeEnum.date,
+    dataType: tableau.dataTypeEnum.int,
   },
   {
     id: "lastPublishDate",
